@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+    <div id="todoList">
+        <h2> To-do list</h2><br>
+        <br>
+        <input type="text" id="taskInput" placeholder="new task...">
+        <button onclick="addTask()">addTask</button>
+        <ul id="taskList"></ul>
+    </div>
+    <script>
+        function addTask(){
+            var input=document.getElementById("taskInput");
+            var taskText=input.value;
+            if(taskText===""){
+                alert("please enter a task")
+                return;
+            }
+            var tasklist=document.getElementById("taskList");
+            var newTask=document.createElement("li");
+            newTask.innerHTML=taskText+'<span onclick="removeTask(this)">❌</span>';
+            tasklist.appendChild(newTask);
+            input.value="";
+        } function removeTask(spanElement){
+              var taskItem=spanElement.parentElement;
+              taskItem.style.display="none";
+        }
+    </script>
+</body>
+</html>
