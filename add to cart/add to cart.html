@@ -1,0 +1,63 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    <link rel="stylesheet" href="cart.css">
+</head>
+<body>
+    <div class="container">
+        <div class="img">
+            <img src="pods.png">
+        </div>
+        <div class="head">
+            <h1>Boat Airdopes</h1>
+            <p>Boat Airdopes 141 Bluetooth TWS Earbuds with 42h Playtime<br>
+            Smooth touch control(bold black)</p>
+            <p class="price">Price : &#8377 900/-</p>
+            <p></p>
+        </div>
+        <div>
+            <button class="btn-1" onclick="check()">Add to Cart</button>
+            <button class="btn-2" id="buy" style="visibility:hidden;">BuyNow</button>
+        </div>
+    </div>
+    <script>
+        let qty = 0;
+        let buy=document.getElementById("buy");
+        buy.style.visibility='hidden';
+        let quantity = document.querySelectorAll("p")[2];
+
+        function check()
+        {
+            qty++;
+            let item ={
+                name :"Boat Airdopes",
+                price : 900,
+            };
+            let total =item.price*qty;
+            outOfStock(qty,total);
+        }
+        function addToCart(qty,total){
+            quantity.innerHTML="Quantity :"+qty;
+            document.querySelector(".price").innerHTML="Price : ₹ "+total+"/-";
+        }
+
+        function outOfStock(qty,total){
+            if(qty>0){
+                buy.style.visibility="visible";
+                if(qty>10){
+                    alert("Out of Stock");
+                    document.querySelector("button").disabled =true;
+                }else{
+                    addToCart(qty,total);
+                }
+            }
+        }
+       
+    </script>
+</body>
+</html>
+
+    
